@@ -143,9 +143,9 @@ export default function ChatPage() {
           { headers: { Authorization: `Bearer ${tokenRef.current}` } }
         );
       }
-      const newMsg = res.data.message;
+      // const newMsg = res.data.message;
       // local append
-      setMessages(prev => [...prev, newMsg]);
+      // setMessages(prev => [...prev, newMsg]);
       setInputMsg('');
     } catch(err) {
       console.error(err);
