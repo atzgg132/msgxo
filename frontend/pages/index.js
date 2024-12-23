@@ -19,18 +19,6 @@ export default function Home() {
         >
           Register
         </Link>
-        <Link
-          href="/chat"
-          className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors"
-        >
-          Chat
-        </Link>
-        <Link
-          href="/logout"
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors"
-        >
-          Logout
-        </Link>
       </div>
     </div>
   );
