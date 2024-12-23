@@ -7,52 +7,53 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { 
-        email, 
-        password 
+      const res = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password,
       });
       const { token, user } = res.data;
-      // store in localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      // redirect
       router.push('/chat');
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       alert('Login failed');
     }
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-200">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Login</h1>
-        <div className="mb-3">
-          <label className="block mb-1">Email</label>
-          <input 
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-800 p-6 rounded shadow-md w-[300px] sm:w-[350px] md:w-[400px]"
+      >
+        <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
+        <div className="mb-4">
+          <label className="block mb-1 text-gray-300">Email</label>
+          <input
             type="email"
-            className="border p-2 w-64"
+            className="border border-gray-700 bg-gray-700 p-2 w-full rounded outline-none focus:border-blue-500"
             value={email}
-            onChange={e => setEmail(e.target.value)}
-            required 
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
-        <div className="mb-3">
-          <label className="block mb-1">Password</label>
-          <input 
+        <div className="mb-6">
+          <label className="block mb-1 text-gray-300">Password</label>
+          <input
             type="password"
-            className="border p-2 w-64"
+            className="border border-gray-700 bg-gray-700 p-2 w-full rounded outline-none focus:border-blue-500"
             value={password}
-            onChange={e => setPassword(e.target.value)}
-            required 
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
-        <button 
+        <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-600 hover:bg-blue-700 w-full py-2 rounded font-semibold transition-colors"
         >
           Login
         </button>
